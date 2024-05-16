@@ -53,8 +53,8 @@ class CoinData:
 
     def clean_coin_data(self):
         coins = self.coin_data['data']['coins']
-        NUM_OF_COINS = 20
-        coins = coins[0 : NUM_OF_COINS]
+        NUM_OF_COINS_TO_GET = 5
+        coins = coins[0 : NUM_OF_COINS_TO_GET]
         coins_df = pd.DataFrame.from_dict(coins)
         COLUMNS_TO_KEEP = ['uuid', 'symbol', 'name', 'iconUrl', 'price', 'change', 'rank']
         coins_df = coins_df.loc[:, COLUMNS_TO_KEEP]

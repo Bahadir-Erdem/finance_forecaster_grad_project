@@ -38,6 +38,7 @@ class StockDataFetcher:
         return pd.DataFrame(data, columns=headers)
     
     def clean_top_stocks(self, top_stocks: pd.DataFrame):
+        NUM_OF_STOCK_TO_GET = 5
         top_stocks.drop(columns='No.', inplace=True)
         top_stocks['% Change'] = pd.to_numeric(top_stocks['% Change'].str.replace('%', ''), errors='coerce').fillna(0)
         top_stocks = top_stocks.map(lambda x: x.replace(',', '') if type(x) == str else x)
@@ -48,7 +49,7 @@ class StockDataFetcher:
         top_stocks.loc[top_stocks['Revenue'].str.endswith('M'), 'Revenue'] = '39.48'
         top_stocks.loc[:, ['Market Cap', 'Stock Price', 'Revenue']] = top_stocks[['Market Cap', 'Stock Price', 'Revenue']].astype('float')
         top_stocks = top_stocks.sort_values(by='Market Cap', ascending=False)
-        stock_symbols = top_stocks.loc[0 : 10, 'Symbol']
+        stock_symbols = top_stocks.loc[0 : NUM_OF_STOCK_TO_GET, 'Symbol']
         return stock_symbols
     
     def get_newest_stock_prices(self, symbol) -> dict:
