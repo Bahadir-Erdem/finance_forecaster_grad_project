@@ -11,3 +11,4 @@ pytz
 sqlalchemy
 bs4
 Functions
+lxml
