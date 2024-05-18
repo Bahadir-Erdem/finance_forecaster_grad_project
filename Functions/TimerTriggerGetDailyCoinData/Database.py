@@ -12,7 +12,7 @@ class Database:
         self.driver = driver
         self.conn_str = f'{self.driver};Server={self.server},1433;Database={self.database};Uid={self.username};Pwd={self.password};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=300;'
         self.max_retry_attempts = 3
-        self.retry_delay = 60  # seconds
+        self.retry_delay = 30  # seconds
 
     def connect(self):
         retry_count = 0
@@ -29,27 +29,6 @@ class Database:
         if last_error is not None:
             logging.error(f"Failed to establish a database connection after multiple retries. Error: {last_error}")
             return None
-    
-    
-    # def connect_to_local_postgres(self):
-    #     retry_count = 0
-    #     last_error = None
-
-    #     while retry_count < self.max_retry_attempts:
-    #         try:
-    #             conn = psycopg2.connect(host=self.server, database=self.database, user=self.username, password=self.password)
-    #             return self
-            
-    #         except psycopg2.Error as error:
-    #             retry_count += 1
-    #             time.sleep(self.retry_delay)
-
-    #     if last_error is not None:
-    #         logging.error(f"Failed to establish a database connection after multiple retries. Error: {last_error}")
-    #         return None
-    
-    #     return self
-    
 
     def close(self):
         self.conn.close()
