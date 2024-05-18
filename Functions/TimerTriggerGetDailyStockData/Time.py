@@ -1,14 +1,17 @@
 from . import Database
 from datetime import datetime
+from pytz import timezone
 
 
 class Time:
     def __init__(self, database: Database) -> None:
         self.conn = database.conn
         self.engine = database.engine
+        self.default_timezone = timezone('Turkey')
+        self.now = datetime.now(self.default_timezone)
 
     def get_time(self, datetime_value: datetime = None):
-        now = datetime_value or datetime.now()
+        now = datetime_value or self.now()
 
         return {
             'time' : now.time(),

@@ -1,18 +1,21 @@
 from . import Database
 from datetime import datetime
+from pytz import timezone
 
 class Date:
     def __init__(self, database: Database) -> None:
         self.conn = database.conn
         self.engine = database.engine
+        default_timezone = timezone('Turkey')
+        self.now = datetime.now(default_timezone)
     
     def get_current_quarter(self, datetime_value: datetime = None):
-        current_date = datetime_value or datetime.now()
+        current_date = datetime_value or self.now
         quarter = (current_date.month - 1) // 3 + 1 
         return quarter
     
     def get_current_date(self, datetime_value: datetime = None):
-        now = datetime_value or datetime.now()
+        now = datetime_value or self.now
 
         return {
             'date' : datetime.date(now),

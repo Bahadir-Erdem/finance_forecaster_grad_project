@@ -13,8 +13,8 @@ import pandas as pd
     
 class Date:
     def __init__(self):
-        default_timezone = timezone('Turkey')
-        self.now = datetime.now(default_timezone)
+        self.default_timezone = timezone('Turkey')
+        self.now = datetime.now(self.default_timezone)
 
     def get_current_quarter(self):
         return (self.now.month - 1) // 3 + 1
@@ -31,8 +31,8 @@ class Date:
 
 class Time:
     def __init__(self):
-        default_timezone = timezone('Turkey')
-        self.now = datetime.now(default_timezone)
+        self.default_timezone = timezone('Turkey')
+        self.now = datetime.now(self.default_timezone)
 
     def get_current_time(self):
         return {
