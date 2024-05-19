@@ -29,5 +29,7 @@ def etl_lightgbm_predict_insert(myTimer: func.TimerRequest) -> None:
     with database.connect() as db:
         predictins_data = PredictionsData(db)
         predictins_data.predict_and_to_db()
+        logging.info('Code executed with success!')
+
 
     logging.info('Python timer trigger function executed.')
