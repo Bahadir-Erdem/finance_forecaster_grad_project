@@ -12,3 +12,7 @@ sqlalchemy
 bs4
 Functions
 lxml
+yfinance
+python-dateutil
+scikit-learn
+lightgbm
