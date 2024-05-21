@@ -1,4 +1,3 @@
-import psycopg2
 import pyodbc
 from sqlalchemy import create_engine
 import time
