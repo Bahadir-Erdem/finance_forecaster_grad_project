@@ -53,11 +53,11 @@ class CoinData:
             uuids = self.get_coin_uuids()
             coin_df = self.get_coin_price_history(uuids)
             return coin_df
-        except Exception as e:
+        except Exception as exception:
                 self.retry_count += 1
                 if self.retry_count == self.max_retry_attempt:
-                    logging.error(e)
+                    logging.error(exception)
+                    raise exception
                 else:
                     time.sleep(self.retry_wait_duration)
                     self.get_coin_data()
-        return coin_df
