@@ -1,10 +1,15 @@
 import requests
 from datetime import datetime
 import pandas as pd
+import time 
+import logging
 
 class CoinData:
     def __init__(self):
         self.api_key = 'coinranking81aaa100de59f42e029a0b86b185a2b7edfaba2d01fe0f96'
+        self.max_retry_attempt = 3
+        self.retry_wait_duration = 30
+        self.retry_count = 0
 
     def get_coin_uuids(self):
         SCOPE_ID = 'marketCap'
@@ -44,6 +49,15 @@ class CoinData:
         return pd.concat(coin_dataset)
 
     def get_coin_data(self):
-        uuids = self.get_coin_uuids()
-        coin_df = self.get_coin_price_history(uuids)
+        try:
+            uuids = self.get_coin_uuids()
+            coin_df = self.get_coin_price_history(uuids)
+            return coin_df
+        except Exception as e:
+                self.retry_count += 1
+                if self.retry_count == self.max_retry_attempt:
+                    logging.error(e)
+                else:
+                    time.sleep(self.retry_wait_duration)
+                    self.get_coin_data()
         return coin_df

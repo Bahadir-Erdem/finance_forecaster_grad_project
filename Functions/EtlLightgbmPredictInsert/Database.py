@@ -36,7 +36,6 @@ class Database:
 
     def close(self):
         self.conn.close()
-        self.engine.dispose()
         return self
 
     def __enter__(self):

@@ -26,4 +26,4 @@ class PredictionsData:
             self.results.append(result)
 
         results_df = pd.concat(self.results)
-        results_df.to_sql('predictions_t', self.engine, if_exists='replace', index=False)
+        # results_df.to_sql('predictions_t', self.engine, if_exists='replace', index=False)
