@@ -32,7 +32,7 @@ def etl_lightgbm_predict_insert(myTimer: func.TimerRequest) -> None:
     database = Database(driver, server, database, username, password)
 
     with database.connect() as db:
-        predictins_data = predictions_data(db)
+        predictins_data = PredictionsData(db)
         predictins_data.predict_and_to_db()
         logging.info('Code executed with success!')
 
