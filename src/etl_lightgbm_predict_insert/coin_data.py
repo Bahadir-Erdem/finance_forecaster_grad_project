@@ -47,18 +47,10 @@ class CoinData:
             logging.info(f'data variable: {data}')
             coin_df = self.clean_coin_data(data, uuid)
             coin_dataset.append(coin_df)
+            time.sleep(5)
         return pd.concat(coin_dataset)
 
     def get_coin_data(self):
-        try:
             uuids = self.get_coin_uuids()
             coin_df = self.get_coin_price_history(uuids)
             return coin_df
-        except Exception as exception:
-                self.retry_count += 1
-                if self.retry_count == self.max_retry_attempt:
-                    logging.error(exception)
-                    raise exception
-                else:
-                    time.sleep(self.retry_wait_duration)
-                    self.get_coin_data()

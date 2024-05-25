@@ -12,7 +12,7 @@ from .predictions_data import PredictionsData
 etl_lightgbm_predict_insert_blueprint = func.Blueprint()
 
 
-@etl_lightgbm_predict_insert_blueprint.timer_trigger(schedule="0 50 11 * * *", arg_name="myTimer", run_on_startup=False,
+@etl_lightgbm_predict_insert_blueprint.timer_trigger(schedule="0 0 16 * * *", arg_name="myTimer", run_on_startup=False,
               use_monitor=False) 
 def etl_lightgbm_predict_insert(myTimer: func.TimerRequest) -> None:
     if myTimer.past_due:
@@ -35,6 +35,5 @@ def etl_lightgbm_predict_insert(myTimer: func.TimerRequest) -> None:
         predictins_data = PredictionsData(db)
         predictins_data.predict_and_to_db()
         logging.info('Code executed with success!')
-
 
     logging.info('Python timer trigger function executed.')

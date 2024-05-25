@@ -13,10 +13,8 @@ blueprints = [
     etl_lightgbm_predict_insert_blueprint
 ]
 
-# for blueprint in blueprints:
-#     app.register_functions(blueprint)
-
-app.register_functions(etl_lightgbm_predict_insert_blueprint)
+for blueprint in blueprints:
+    app.register_functions(blueprint)
 
 
 
