@@ -4,7 +4,7 @@ import datetime
 from unittest.mock import patch, MagicMock
 from pytz import timezone
 
-from functions.timer_trigger_get_daily_coin_data.entity import Date, Time, CoinData, CoinPriceData
+from src.timer_trigger_get_daily_coin_data.entity import Date, Time, CoinData, CoinPriceData
 
 @pytest.fixture
 def date_obj():

@@ -44,6 +44,7 @@ class CoinData:
             url = f"https://api.coinranking.com/v2/coin/{uuid}/history?timePeriod={time_period}"
             response = requests.get(url, headers=headers)
             data = response.json()
+            logging.info(f'data variable: {data}')
             coin_df = self.clean_coin_data(data, uuid)
             coin_dataset.append(coin_df)
         return pd.concat(coin_dataset)

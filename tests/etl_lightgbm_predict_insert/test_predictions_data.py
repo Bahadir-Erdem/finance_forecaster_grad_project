@@ -1,10 +1,10 @@
 import pytest
 import pandas as pd
 from unittest.mock import MagicMock, patch
-from functions.etl_lightgbm_predict_insert.database import Database
-from functions.etl_lightgbm_predict_insert.model import Model
-from functions.etl_lightgbm_predict_insert.training_data import TrainingData
-from functions.etl_lightgbm_predict_insert.predictions_data import PredictionsData
+from src.etl_lightgbm_predict_insert.database import Database
+from src.etl_lightgbm_predict_insert.model import Model
+from src.etl_lightgbm_predict_insert.training_data import TrainingData
+from src.etl_lightgbm_predict_insert.predictions_data import PredictionsData
 
 
 @pytest.fixture

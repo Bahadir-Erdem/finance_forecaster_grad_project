@@ -1,9 +1,8 @@
 import pytest
-import requests
 import pandas as pd
 from unittest.mock import patch, MagicMock
 from datetime import datetime
-from functions.timer_trigger_get_daily_stock_data.stock_data_fetcher import StockDataFetcher  # Replace with the actual module name
+from src.timer_trigger_get_daily_stock_data.stock_data_fetcher import StockDataFetcher  # Replace with the actual module name
 
 @pytest.fixture
 def fetcher_instance():

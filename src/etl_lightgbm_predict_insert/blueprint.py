@@ -12,7 +12,7 @@ from .predictions_data import PredictionsData
 etl_lightgbm_predict_insert_blueprint = func.Blueprint()
 
 
-@etl_lightgbm_predict_insert_blueprint.timer_trigger(schedule="0 0 9 * * *", arg_name="myTimer", run_on_startup=False,
+@etl_lightgbm_predict_insert_blueprint.timer_trigger(schedule="0 50 11 * * *", arg_name="myTimer", run_on_startup=False,
               use_monitor=False) 
 def etl_lightgbm_predict_insert(myTimer: func.TimerRequest) -> None:
     if myTimer.past_due:

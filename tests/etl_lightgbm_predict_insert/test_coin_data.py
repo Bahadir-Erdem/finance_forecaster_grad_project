@@ -1,5 +1,5 @@
 import pytest
-from functions.etl_lightgbm_predict_insert.coin_data import CoinData
+from src.etl_lightgbm_predict_insert.coin_data import CoinData
 
 BITCOIN_UUID = 'Qwsogvtv82FCd'
 ETHERIUM_UUID = 'razxDUgYGNAdQ'
