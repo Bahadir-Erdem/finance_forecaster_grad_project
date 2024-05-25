@@ -57,10 +57,10 @@ class Date:
 
         try:
             cursor.execute(GET_EXISTING_DATE_QUERY, (str(current_date),))
-            existing_date_id = cursor.fetchone()
+            existing_date_id = cursor.fetchone()[0]
 
             if existing_date_id is not None:
-                date_id = existing_date_id[0]
+                date_id = existing_date_id
             else:
                 self.insert_date(datetime_value)
                 cursor.execute(GET_NEWEST_ID_QUERY)
