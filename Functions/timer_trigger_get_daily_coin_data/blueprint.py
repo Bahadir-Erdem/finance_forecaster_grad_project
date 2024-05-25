@@ -6,8 +6,8 @@
 
 import logging
 import azure.functions as func
-from .Database import Database
-from .Entity import CoinData, CoinPriceData, Date, Time
+from .database import Database
+from .entity import CoinData, CoinPriceData, Date, Time
 
 
 

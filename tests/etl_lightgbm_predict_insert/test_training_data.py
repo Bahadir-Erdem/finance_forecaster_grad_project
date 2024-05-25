@@ -1,6 +1,6 @@
 import pytest
 import pandas as pd
-from functions.etl_lightgbm_predict_insert.TrainingData import TrainingData
+from functions.etl_lightgbm_predict_insert.training_data import TrainingData
 
 @pytest.fixture
 def training_data():

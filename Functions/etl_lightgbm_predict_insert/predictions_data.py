@@ -1,6 +1,6 @@
-from .Database import Database
-from .Model import Model
-from .TrainingData import TrainingData
+from .database import Database
+from .model import Model
+from .training_data import TrainingData
 import pandas as pd
 
 class PredictionsData:

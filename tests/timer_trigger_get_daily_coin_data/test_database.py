@@ -3,7 +3,8 @@ import pandas as pd
 from datetime import datetime, date
 from unittest.mock import patch, MagicMock
 
-from functions.timer_trigger_get_daily_coin_data.database import Database, Date, Time, CoinData, CoinPriceData
+from functions.timer_trigger_get_daily_coin_data.database import Database
+from functions.timer_trigger_get_daily_coin_data.entity import Date, Time, CoinData, CoinPriceData
 
 @pytest.fixture
 def date_obj():

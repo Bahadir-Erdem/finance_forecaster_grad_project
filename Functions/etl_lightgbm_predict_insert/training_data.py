@@ -1,5 +1,5 @@
-from .CoinData import CoinData
-from .StockData import StockData
+from .coin_data import CoinData
+from .stock_data import StockData
 import pandas as pd
 
 class TrainingData:

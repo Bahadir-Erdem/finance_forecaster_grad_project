@@ -1,8 +1,7 @@
-from . import Database, Date, Time, StockDataFetcher
-from .Database import Database
-from .Date import Date
-from .Time import Time
-from .StockDataFetcher import StockDataFetcher
+from .database import Database
+from .date import Date
+from .time import Time
+from .stock_data_fetcher import StockDataFetcher
 import pandas as pd
 
 class StockDataHandler:

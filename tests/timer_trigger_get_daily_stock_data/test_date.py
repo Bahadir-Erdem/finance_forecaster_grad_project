@@ -2,8 +2,8 @@ from unittest.mock import patch, MagicMock
 import pytest
 from datetime import datetime, timedelta
 
-from functions.timer_trigger_get_daily_stock_data.Date import Date
-from functions.timer_trigger_get_daily_stock_data.Database import Database
+from functions.timer_trigger_get_daily_stock_data.date import Date
+from functions.timer_trigger_get_daily_stock_data.database import Database
 
 @pytest.fixture
 def database_obj():

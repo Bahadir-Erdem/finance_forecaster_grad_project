@@ -2,9 +2,8 @@ import pytest
 from unittest.mock import patch, MagicMock
 from datetime import datetime
 from pytz import timezone
-from functions.timer_trigger_get_daily_stock_data.Database import Database
-from functions.timer_trigger_get_daily_stock_data.Time import Time
-import pyodbc
+from functions.timer_trigger_get_daily_stock_data.database import Database
+from functions.timer_trigger_get_daily_stock_data.time import Time
 
 @pytest.fixture
 def database_obj():

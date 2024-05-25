@@ -1,7 +1,7 @@
 from datetime import datetime
 import pytest
 import pandas as pd
-from functions.etl_lightgbm_predict_insert.StockData import StockData
+from functions.etl_lightgbm_predict_insert.stock_data import StockData
 
 
 

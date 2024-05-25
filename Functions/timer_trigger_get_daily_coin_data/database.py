@@ -1,6 +1,6 @@
 import time
 import pyodbc
-from .Entity import CoinData, CoinPriceData, Date, Time
+from .entity import CoinData, CoinPriceData, Date, Time
 import logging
 
 class Database:

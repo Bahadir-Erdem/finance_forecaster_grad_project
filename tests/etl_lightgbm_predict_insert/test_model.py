@@ -1,5 +1,5 @@
 import pytest
-from functions.etl_lightgbm_predict_insert.Model import Model
+from functions.etl_lightgbm_predict_insert.model import Model
 import pandas as pd
 from numpy import ndarray
 

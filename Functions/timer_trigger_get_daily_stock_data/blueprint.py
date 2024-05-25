@@ -6,15 +6,15 @@
 
 import logging
 import azure.functions as func
-from .Database import Database
-from .PredictionsData import PredictionsData
+from .database import Database
+from .stock_data_handler import StockDataHandler
 
-etl_lightgbm_predict_insert_blueprint = func.Blueprint()
+timer_trigger_get_daily_stock_data_blueprint = func.Blueprint()
 
 
-@etl_lightgbm_predict_insert_blueprint.timer_trigger(schedule="0 0 9 * * *", arg_name="myTimer", run_on_startup=False,
+@timer_trigger_get_daily_stock_data_blueprint.timer_trigger(schedule="0 15 12 * * *", arg_name="myTimer", run_on_startup=False,
               use_monitor=False) 
-def etl_lightgbm_predict_insert(myTimer: func.TimerRequest) -> None:
+def timer_trigger_get_daily_stock_data(myTimer: func.TimerRequest) -> None:
     if myTimer.past_due:
         logging.info('The timer is past due!')
 
@@ -24,17 +24,11 @@ def etl_lightgbm_predict_insert(myTimer: func.TimerRequest) -> None:
     username = 'bentham'
     password = '!Rand357' 
     driver = 'Driver={ODBC Driver 18 for SQL Server}'
-    # server = 'localhost'
-    # database = 'grad_project'
-    # username = 'user1'
-    # password = '12345' 
-    # driver = 'Driver={ODBC Driver 18 for SQL Server}'
     database = Database(driver, server, database, username, password)
 
     with database.connect() as db:
-        predictins_data = PredictionsData(db)
-        predictins_data.predict_and_to_db()
-        logging.info('Code executed with success!')
-
+        stock_data_handler = StockDataHandler(db)
+        stock_data_handler.fetch_and_to_db()
+        logging.info('Code executed successfully!')
 
     logging.info('Python timer trigger function executed.')

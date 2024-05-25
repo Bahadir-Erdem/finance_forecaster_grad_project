@@ -1,11 +1,11 @@
 import pytest
 import pandas as pd
 from unittest.mock import patch, MagicMock
-from functions.timer_trigger_get_daily_stock_data.Database import Database
-from functions.timer_trigger_get_daily_stock_data.Time import Time
-from functions.timer_trigger_get_daily_stock_data.Date import Date
-from functions.timer_trigger_get_daily_stock_data.StockDataFetcher import StockDataFetcher
-from functions.timer_trigger_get_daily_stock_data.StockDataHandler import StockDataHandler
+from functions.timer_trigger_get_daily_stock_data.database import Database
+from functions.timer_trigger_get_daily_stock_data.time import Time
+from functions.timer_trigger_get_daily_stock_data.date import Date
+from functions.timer_trigger_get_daily_stock_data.stock_data_fetcher import StockDataFetcher
+from functions.timer_trigger_get_daily_stock_data.stock_data_handler import StockDataHandler
 
 FILE_ADDRESS = 'functions.timer_trigger_get_daily_stock_data'
 

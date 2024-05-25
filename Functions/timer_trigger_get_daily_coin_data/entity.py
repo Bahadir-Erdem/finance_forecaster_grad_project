@@ -4,13 +4,7 @@ import requests
 import json
 import pandas as pd
 
-# class Timezone: eklenebilir
-#     def __init__(self, zone: str) -> None:
-#         self.zone = zone
 
-#     def get_zone(self):
-#         return self.zone
-    
 class Date:
     def __init__(self):
         self.default_timezone = timezone('Turkey')

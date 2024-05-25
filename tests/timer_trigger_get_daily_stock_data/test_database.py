@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch, MagicMock
-from functions.timer_trigger_get_daily_stock_data import Database
+from functions.timer_trigger_get_daily_stock_data.database import Database
 
 @pytest.fixture
 def database_obj():
