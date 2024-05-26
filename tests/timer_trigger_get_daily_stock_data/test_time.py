@@ -2,20 +2,25 @@ import pytest
 from unittest.mock import patch, MagicMock
 from datetime import datetime
 from pytz import timezone
+import yaml
 from src.timer_trigger_get_daily_stock_data.database import Database
 from src.timer_trigger_get_daily_stock_data.time import Time
 
 @pytest.fixture
 def database_obj():
-    server = 'localhost'
-    database = 'grad_project'
-    username = 'user1'
-    password = '12345'
-    driver = 'Driver={ODBC Driver 18 for SQL Server}'
+    with open('database_config.yaml') as f:
+        yaml_dictionary = yaml.safe_load(f)
+        database_settings = yaml_dictionary['test_db_settings']
+
+    server = database_settings['server']
+    database = database_settings['database']
+    username = database_settings['username']
+    password = database_settings['password']
+    driver = database_settings['driver']
     conn_str = (f'{driver};Server={server},1433;Database={database};Uid={username};Pwd={password};'
                 'Encrypt=yes;TrustServerCertificate=yes;Connection Timeout=300;')
 
-    database = Database(driver, server, database, username, password)
+    database = Database(**database_settings)
     database.conn_str = conn_str
     return database
 
