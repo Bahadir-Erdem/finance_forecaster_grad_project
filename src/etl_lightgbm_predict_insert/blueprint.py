@@ -12,7 +12,7 @@ from .predictions_data import PredictionsData
 etl_lightgbm_predict_insert_blueprint = func.Blueprint()
 
 
-@etl_lightgbm_predict_insert_blueprint.timer_trigger(schedule="0 0 6 * * 1", arg_name="myTimer", run_on_startup=False,
+@etl_lightgbm_predict_insert_blueprint.timer_trigger(schedule="0 0 16 * * *", arg_name="myTimer", run_on_startup=False,
               use_monitor=False) 
 def etl_lightgbm_predict_insert(myTimer: func.TimerRequest) -> None:
     if myTimer.past_due:
@@ -24,6 +24,11 @@ def etl_lightgbm_predict_insert(myTimer: func.TimerRequest) -> None:
     username = 'bentham'
     password = '!Rand357' 
     driver = 'Driver={ODBC Driver 18 for SQL Server}'
+    # server = 'localhost'
+    # database = 'grad_project'
+    # username = 'user1'
+    # password = '12345' 
+    # driver = 'Driver={ODBC Driver 18 for SQL Server}'
     database = Database(driver, server, database, username, password)
 
     with database.connect() as db:
