@@ -1,0 +1,16 @@
+# if you want to test it on local SQL Server, You need to change conn_str for every database.py as folowing:
+  # TrustServerCertificate=no; -> TrustServerCertificate=yes;
+production_db_settings: # for Azure SQL Server
+  driver: 'Driver={ODBC Driver 18 for SQL Server}'
+  server: 'tcp:gradprojectito.database.windows.net'
+  database: 'grad-project'
+  username: 'bentham'
+  password: '!Rand357' 
+
+test_db_settings: # for SQL Server
+  driver: 'Driver={ODBC Driver 18 for SQL Server}'
+  server: 'localhost'
+  database: 'grad_project'
+  username: 'user1'
+  password: '12345' 
+  

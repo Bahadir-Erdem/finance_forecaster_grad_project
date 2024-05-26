@@ -8,7 +8,7 @@ import logging
 import azure.functions as func
 from .database import Database
 from .entity import CoinData, CoinPriceData, Date, Time
-
+import yaml
 
 
 timer_trigger_get_daily_coin_data_blueprint = func.Blueprint()
@@ -20,14 +20,11 @@ def timer_trigger_get_daily_coin_data(myTimer: func.TimerRequest) -> None:
     if myTimer.past_due:
         logging.info('The timer is past due!')
 
-    
-    server = 'tcp:gradprojectito.database.windows.net'
-    database = 'grad-project'
-    username = 'bentham'
-    password = '!Rand357' 
-    driver = 'Driver={ODBC Driver 18 for SQL Server}'
+    with open('database_config.yaml') as f:
+        yaml_dictionary = yaml.safe_load(f)
+        database_settings = yaml_dictionary['production_db_settings']
 
-    database = Database(server, database, username, password, driver)
+    database = Database(**database_settings)
     conn = database.connect()
     
     if conn is not None:

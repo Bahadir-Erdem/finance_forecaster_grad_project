@@ -8,6 +8,7 @@ import logging
 import azure.functions as func
 from .database import Database
 from .stock_data_handler import StockDataHandler
+import yaml
 
 timer_trigger_get_daily_stock_data_blueprint = func.Blueprint()
 
@@ -18,13 +19,11 @@ def timer_trigger_get_daily_stock_data(myTimer: func.TimerRequest) -> None:
     if myTimer.past_due:
         logging.info('The timer is past due!')
 
-    
-    server = 'tcp:gradprojectito.database.windows.net'
-    database = 'grad-project'
-    username = 'bentham'
-    password = '!Rand357' 
-    driver = 'Driver={ODBC Driver 18 for SQL Server}'
-    database = Database(driver, server, database, username, password)
+    with open('database_config.yaml') as f:
+        yaml_dictionary = yaml.safe_load(f)
+        database_settings = yaml_dictionary['production_db_settings']
+
+    database = Database(**database_settings)
 
     with database.connect() as db:
         stock_data_handler = StockDataHandler(db)

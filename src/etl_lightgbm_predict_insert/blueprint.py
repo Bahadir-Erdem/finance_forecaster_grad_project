@@ -8,6 +8,7 @@ import logging
 import azure.functions as func
 from .database import Database
 from .predictions_data import PredictionsData
+import yaml
 
 etl_lightgbm_predict_insert_blueprint = func.Blueprint()
 
@@ -18,13 +19,11 @@ def etl_lightgbm_predict_insert(myTimer: func.TimerRequest) -> None:
     if myTimer.past_due:
         logging.info('The timer is past due!')
 
-    
-    server = 'tcp:gradprojectito.database.windows.net'
-    database = 'grad-project'
-    username = 'bentham'
-    password = '!Rand357' 
-    driver = 'Driver={ODBC Driver 18 for SQL Server}'
-    database = Database(driver, server, database, username, password)
+    with open('database_config.yaml') as f:
+        yaml_dictionary = yaml.safe_load(f)
+        database_settings = yaml_dictionary['production_db_settings']
+
+    database = Database(**database_settings)
 
     with database.connect() as db:
         predictins_data = PredictionsData(db)

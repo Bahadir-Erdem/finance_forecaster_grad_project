@@ -4,13 +4,13 @@ import time
 import logging
 
 class Database:
-    def __init__(self, driver, server, database, user, password):
+    def __init__(self, driver, server, database, username, password):
         self.driver = driver
         self.server = server
         self.database = database
-        self.user = user
+        self.username = username
         self.password = password
-        self.conn_str = f"{self.driver};Server={self.server},1433;Database={self.database};Uid={self.user};Pwd={self.password};Encrypt=yes;TrustServerCertificate=yes;"
+        self.conn_str = f"{self.driver};Server={self.server},1433;Database={self.database};Uid={self.username};Pwd={self.password};Encrypt=yes;TrustServerCertificate=no;"
         self.max_retry_attempts = 3
         self.retry_delay = 30  # seconds
 
