@@ -10,7 +10,15 @@ class Database:
         self.database = database
         self.username = username
         self.password = password
-        self.conn_str = f'{self.driver};Server={self.server},1433;Database={self.database};Uid={self.username};Pwd={self.password};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=300;'
+        self.conn_str = (
+            f"{self.driver};"
+            f"Server={self.server},1433;"
+            f"Database={self.database};"
+            f"Uid={self.username};"
+            f"Pwd={self.password};"
+            f"Encrypt=yes;"
+            f"TrustServerCertificate=no;"
+        )
         self.max_retry_attempts = 3
         self.retry_delay = 30  # seconds
 
