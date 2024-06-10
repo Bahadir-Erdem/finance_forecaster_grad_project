@@ -42,27 +42,6 @@ class Database:
     
         return self
 
-    # def connect_to_local_postgres(self):
-    #     retry_count = 0
-    #     last_error = None
-
-    #     while retry_count < self.max_retry_attempts:
-    #         try:
-    #             conn = psycopg2.connect(host=self.server, database=self.database, user=self.username, password=self.password)
-    #             connection_string = f'postgresql://{self.username}:{self.password}@{self.server}/{self.database}'
-    #             engine = create_engine(connection_string, creator=lambda: conn)
-    #             return self
-            
-    #         except psycopg2.Error as error:
-    #             retry_count += 1
-    #             time.sleep(self.retry_delay)
-
-    #     if last_error is not None:
-    #         logging.error(f"Failed to establish a database connection after multiple retries. Error: {last_error}")
-    #         return None
-    
-    #     return self
-
     def close(self):
         self.conn.close()
         return self
@@ -77,3 +56,6 @@ class Database:
             return False
         else:
             return self.close()
+        
+
+        
