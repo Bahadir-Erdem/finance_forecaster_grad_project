@@ -54,7 +54,7 @@ class StockDataFetcher:
         return stock_symbols
 
     def get_newest_stock_prices(self, symbol) -> dict:
-        API_KEY = "cmah5v1r01qid8geg3egcmah5v1r01qid8geg3f0"
+        API_KEY = ""
         url = "https://finnhub.io/api/v1/quote"
         params = {"symbol": symbol, "token": API_KEY}
 
@@ -67,7 +67,7 @@ class StockDataFetcher:
             raise ValueError(f"Error retrieving data: {data.get('error')}")
 
     def get_stock_info(self, symbol) -> dict:
-        API_KEY = "oCWHOmLf720nGdABX6rlgyFU3O7anlLc"
+        API_KEY = ""
         url = f"https://financialmodelingprep.com/api/v3/profile/{symbol}?apikey={API_KEY}"
 
         try:

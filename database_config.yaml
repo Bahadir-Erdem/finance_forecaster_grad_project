@@ -2,15 +2,15 @@
   # TrustServerCertificate=no; -> TrustServerCertificate=yes;
 production_db_settings: # for Azure SQL Server
   driver: 'Driver={ODBC Driver 18 for SQL Server}'
-  server: 'tcp:gradprojectito.database.windows.net'
-  database: 'grad-project'
-  username: 'bentham'
-  password: '!Rand357' 
+  server: 'tcp:sample.net'
+  database: ''
+  username: ''
+  password: '' 
 
 test_db_settings: # for SQL Server
   driver: 'Driver={ODBC Driver 18 for SQL Server}'
-  server: 'localhost'
-  database: 'grad_project'
-  username: 'user1'
-  password: '12345' 
+  server: ''
+  database: ''
+  username: ''
+  password: '' 
   
